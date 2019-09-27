@@ -1,10 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plot
 
-# this is just for me to learn python's matplot and numpy frameworks
 def gentriangle(x):
-    array=[0]*(x) #creating an array of 0, with the size of x
-    # i will have to split the function to even and odd
+    array=[0]*(x)
     
     for i in range(0,int(x/2)+1):
         array[i]=i
@@ -14,7 +12,6 @@ def gentriangle(x):
             array[len(array)-i-1]=array[i]
     array[len(array)-1]=0
     return array
- ## issues with the gen square wave, the code's repeating twice
 def gensquare(a,x):
     array=[a]*x
     array[0]=0
@@ -25,11 +22,10 @@ def discrete_convolution(a,b):
     array=np.convolve(a,b)
     return array
 
-#note to self this is the discrete time of the process
 choice=int(input("which graphs would you you like to see convoloted, Square * triangle(1),Triangle *Triangle(2),Square * Square(3)"))
-graph_length=int(input("how long is your graph moving for ? ")) #make sure to make this an integer function as this function only returns strings.
+graph_length=int(input("how long is your graph moving for ? "))
 
-if choice==1: #this function doesnt even work
+if choice==1: 
     a=int(input("please insert amplitude of sqaure?"))
     plot.subplot(333)
     plot.title("Square Function")
@@ -38,14 +34,14 @@ if choice==1: #this function doesnt even work
     plot.setp(square_wave)
     plot.subplot(331)
     plot.title("Triangular Function")
-    triangle_wave=plot.stem(gentriangle(graph_length+1))  ## fix crappy code
-    plot.setp(triangle_wave) ## fix crappy code
+    triangle_wave=plot.stem(gentriangle(graph_length+1))  
+    plot.setp(triangle_wave) 
     plot.subplot(313)
     plot.title("Resulting convolution of both functions")
     convolution1=plot.stem(discrete_convolution(gensquare(a,graph_length),gentriangle(graph_length))) #issues in this line
     plot.setp(convolution1)
     plot.show()
-elif choice==2: #fix the triangle titles
+elif choice==2: 
     plot.subplot(333)
     plot.title("First trianguler function")
     triangle_wave=plot.stem(gentriangle(graph_length+1))
